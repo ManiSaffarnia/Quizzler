@@ -10,11 +10,11 @@ import Foundation
 
 class Question{
     
-    var title: String
-    var answer: Bool
+    var text: String
+    var correctAnswer: Bool
     
-    init(questionTitle:String , questionAnswer:Bool){
-        title = questionTitle
-        answer = questionAnswer
+    init(text:String , correctAnswer:Bool){
+        self.text = text
+        self.correctAnswer = correctAnswer
     }
 }

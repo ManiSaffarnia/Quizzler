@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     //Place your instance variables here
-    
+    let game = Quizzler()
+    var selectedAnswer = false
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -20,12 +21,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        questionLabel.text = game.questionList[0].text
     }
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-  
+        if sender.tag == 1{
+            selectedAnswer = true
+        }else{
+            selectedAnswer = false
+        }
+        checkAnswer()
     }
     
     
@@ -40,7 +46,11 @@ class ViewController: UIViewController {
     
     
     func checkAnswer() {
-        
+        if game.questionList[0].correctAnswer == selectedAnswer{
+            print("you are right")
+        }else{
+            print("Wrong!")
+        }
     }
     
     
