@@ -48,6 +48,12 @@ class ViewController: UIViewController {
             questionLabel.text = game.questionList[questionTrackingNumber].text
         }else{
             print("finished")
+            let alert = UIAlertController(title: "Awsome", message: "You've finished all the questions, would you like to start over?", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "restart", style: .default, handler: {(UIAlertAction) in
+                self.startOver()
+            })
+            alert.addAction(restartAction)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -62,7 +68,8 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+       questionTrackingNumber = -1
+       nextQuestion()
     }
     
 
