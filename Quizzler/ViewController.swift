@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     //Place your instance variables here
     let game = Quizzler()
     var selectedAnswer = false
+    var questionTrackingNumber = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = game.questionList[0].text
+        questionLabel.text = game.questionList[questionTrackingNumber].text
     }
 
 
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
             selectedAnswer = false
         }
         checkAnswer()
+        nextQuestion()
     }
     
     
@@ -41,12 +43,17 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
-        
+        questionTrackingNumber += 1
+        if questionTrackingNumber < game.questionList.count{
+            questionLabel.text = game.questionList[questionTrackingNumber].text
+        }else{
+            print("finished")
+        }
     }
     
     
     func checkAnswer() {
-        if game.questionList[0].correctAnswer == selectedAnswer{
+        if game.questionList[questionTrackingNumber].correctAnswer == selectedAnswer{
             print("you are right")
         }else{
             print("Wrong!")
