@@ -47,9 +47,11 @@ class ViewController: UIViewController {
     
     func checkAnswer() {
         if game.questionList[0].correctAnswer == selectedAnswer{
-            print("you are right")
+            ProgressHUD.showSuccess("Correct")
+            //print("you are right")
         }else{
-            print("Wrong!")
+            ProgressHUD.showError("Wrong!")
+            //print("Wrong!")
         }
     }
     
